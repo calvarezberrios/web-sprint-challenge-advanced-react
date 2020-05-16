@@ -13,3 +13,16 @@
 .light-mode #search {
     border: 1px solid slategray;
 }
+
+.light-mode form {
+    background: none;
+    color: black
+}
+
+.light-mode form label, .light-mode form h2 {
+    color: black;
+}
+
+.light-mode form input {
+    border-color: lightslategray;
+}
