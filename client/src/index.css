@@ -1,0 +1,15 @@
+.light-mode {
+    background: #d7f7a9;
+}
+
+.light-mode .container h1, .light-mode .container div{
+    color: black;
+}
+
+.light-mode .plant-list div, .light-mode .plant-list h2 {
+    color: black;
+}
+
+.light-mode #search {
+    border: 1px solid slategray;
+}
