@@ -1,5 +1,6 @@
 .light-mode {
     background: #d7f7a9;
+    color: black;
 }
 
 .light-mode .container h1, .light-mode .container div{
@@ -25,4 +26,8 @@
 
 .light-mode form input {
     border-color: lightslategray;
+}
+
+.light-mode .cart, .light-mode .cart div, .light-mode h2 {
+    color: black;
 }

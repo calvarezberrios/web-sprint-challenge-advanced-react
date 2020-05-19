@@ -56,7 +56,9 @@ function App() {
             </li>
           </ul>
           <FormGroup>
+            
             <Typography component="div">
+                  <p style = {{textAlign: "center", textDecoration: "underline"}}>Theme</p>
                   <Grid component="label" container alignItems="center" spacing={1}>
                       <Grid item>Dark</Grid>
                       <Grid item>
