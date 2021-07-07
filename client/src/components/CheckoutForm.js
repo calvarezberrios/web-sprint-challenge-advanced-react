@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useForm from "../hooks/useForm";
 
 const initialValue = {
   firstName: "",
@@ -13,66 +14,71 @@ const initialValue = {
 // Build out the logic needed for a form custom hook (see the useForm.js file)
 // and replace the necessary stateful logic from CheckoutForm with the hook
 
-const CheckoutForm = (props) => {
+const CheckoutForm = (props) => {  
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [values, setValues] = useState(initialValue);
-
-  const handleChanges = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-  };
+  const [values, handleChange] = useForm(initialValue);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setShowSuccessMessage(true);
-  };
+
+    if( values.firstName && 
+        values.lastName && 
+        values.address && 
+        values.city && 
+        values.state && 
+        values.zip ) setShowSuccessMessage(true);
+};
 
   return (
     <>
       <form onSubmit={handleSubmit}>
         <h2>Checkout Form</h2>
-        <label>
+        <label htmlFor = "firstName">
           First Name:
           <input
+            id = "firstName"
             name="firstName"
             value={values.firstName}
-            onChange={handleChanges}
+            onChange={handleChange}
           />
         </label>
-        <label>
+        <label htmlFor = "lastName">
           Last Name:
           <input
+            id = "lastName"
             name="lastName"
             value={values.lastName}
-            onChange={handleChanges}
+            onChange={handleChange}
           />
         </label>
-        <label>
+        <label htmlFor = "address">
           Address:
           <input
+            id = "address"
             name="address"
             value={values.address}
-            onChange={handleChanges}
+            onChange={handleChange}
           />
         </label>
-        <label>
+        <label htmlFor = "city">
           City:
-          <input name="city" value={values.city} onChange={handleChanges} />
+          <input id = "city" name="city" value={values.city} onChange={handleChange} />
         </label>
-        <label>
+        <label htmlFor = "state">
           State:
-          <input name="state" value={values.state} onChange={handleChanges} />
+          <input id = "state" name="state" value={values.state} onChange={handleChange} />
         </label>
-        <label>
+        <label htmlFor = "zip">
           Zip:
-          <input name="zip" value={values.zip} onChange={handleChanges} />
+          <input id = "zip" name="zip" value={values.zip} onChange={handleChange} />
         </label>
-        <button>Checkout</button>
+        <button data-testid = "submitButton">Checkout</button>
       </form>
 
       {showSuccessMessage && (
         <div className="success-message" data-testid="successMessage">
           <p>
-            You have ordered some plants! Woo-hoo! <span role="img">🎉</span>
+            You have ordered some plants! Woo-hoo! <span role="img" aria-label = "party horn icon">🎉</span>
           </p>
           <p>Your new green friends will be shipped to:</p>
           <br />
